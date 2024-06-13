@@ -1,0 +1,45 @@
+/**
+  *   >> Github : Rayan Alqadhi .~
+  *   << BY : Rayan Al-Qadhi>>
+  */
+package asemlibrary;
+import java.util.Scanner;
+/**
+* @author Asem Al-Mekhlafi
+*/
+public class Calculate {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        double total = 0;
+        boolean firstOpration = true;
+        do {
+            int num;
+            do {
+                System.out.print("Enter num: ");
+                if (in.hasNextInt()) {
+                    num = in.nextInt();
+                    break;
+                }else{
+                    System.out.println("Enter only number.");
+                    in.next();
+                }
+            } while (true);
+            System.out.print("Enter opration: ");
+            char ch = in.next().charAt(0);
+            if (ch == '=') {
+                break;
+            }else if (firstOpration && (ch == '*' || ch == '/')) {
+                total = 1; // if opraton is mult in first time it must start with one.
+            }
+            switch(ch){
+                case '+' -> total += num;
+                case '-' -> total -= num;
+                case '*' -> total *= num;
+                case '/' -> total /= num;
+                default -> System.out.println("unknown opration.");
+            }
+            firstOpration = false;
+        } while (true);
+        System.out.print("total: "+total);
+    }
+}
